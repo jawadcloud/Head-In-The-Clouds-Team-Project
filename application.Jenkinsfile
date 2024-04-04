@@ -14,8 +14,8 @@ pipeline {
         stage('Clone') {
             steps {
                 script {
-                    dir('Cloud-Engineering-Team-Project') {
-                        git credentialsId: "${env.GITHUB_CREDENTIALS}", url: 'https://github.com/jawadscloud/Cloud-Engineering-Team-Project.git', branch: 'jawad'
+                    dir('Head-In-The-Clouds-Cloud-Project') {
+                        git credentialsId: "${env.GITHUB_CREDENTIALS}", url: 'https://github.com/jawadscloud/Head-In-The-Clouds-Cloud-Project.git', branch: 'main'
                     }
                     dir('ce-team-project-frontend') {
                         git credentialsId: "${env.GITHUB_CREDENTIALS}", url: 'https://github.com/northcoders/ce-team-project-frontend.git', branch: 'main'
@@ -48,7 +48,7 @@ pipeline {
                     sh 'aws eks --region eu-west-2 update-kubeconfig --name hitc-eks-cluster'
                     def BACKEND_SERVICE = sh(script: "kubectl get svc backend-service -n hitc -o=jsonpath='{.status.loadBalancer.ingress[0].hostname}'", returnStdout: true).trim()
                     def BACKEND_SERVICE_URL = BACKEND_SERVICE + ":8080"
-                    dir('Cloud-Engineering-Team-Project') {
+                    dir('Head-In-The-Clouds-Cloud-Project') {
                         dir('helm') {
                             dir('hitc') {
                                 dir('templates') {
