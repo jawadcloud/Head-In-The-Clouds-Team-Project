@@ -18,7 +18,7 @@ ec2_instance_type = "t3.small"
 ec2_ami_type      = "ami-0b9932f4918a00c4f"
 
 # RDS VARS
-rds_db_name              = "cetpDB"
+rds_db_name              = "hitcDB"
 rds_db_identifier        = "hitc-db"
 rds_db_instance_class    = "db.t3.micro"
 rds_db_engine            = "postgres"
